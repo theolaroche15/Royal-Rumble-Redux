@@ -1,8 +1,17 @@
+import { useDispatch } from "react-redux";
+import { hitMonster, hitBack } from "../../features/fight/fightSlice";
 import "./ButtonCapacity.css";
 
-function ButtonCapacity() {
+function ButtonCapacity({ playerId }) {
+  // useDispatch nous permet de dispatcher des actions
+  const dispatch = useDispatch();
+
   const fight = () => {
-    console.log("aie !");
+    // Dispatche l'action hitMonster avec une force de 5
+    dispatch(hitMonster(5));
+    console.log("🗡️ Attaque lancée !");
+    dispatch(hitBack(playerId));
+    console.log("💥 Le monstre riposte !");
   };
 
   return (
